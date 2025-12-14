@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
 import { Sora } from "next/font/google";
 import "./globals.css";
-import ResponsiveNav from "@/component/Home/Navbar/ResponsiveNav";
+import TopLeftimg from "@/component/Helper/TopLeftimg/TopLeftimg";
+import Nav from "@/component/Home/Navbar/Nav";
 
 //font-settings
 const sora = Sora({
   variable: "--font-sora",
   subsets: ["latin"],
 });
-
-
 
 export const metadata: Metadata = {
   title: "saklain Sahariar protfolio - build with the Next-js",
@@ -23,11 +22,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${sora.variable} antialiased`}
-      >
-        <ResponsiveNav></ResponsiveNav>
-        {children}
+      <body className="bg-secondary overflow-hidden leading-relaxed">
+        <div className={`w-full h-screen overflow-hidden bg-site h1 ${sora.variable} bg-cover bg-no-repeat font-sora relative`}>
+          <TopLeftimg></TopLeftimg>
+          <Nav></Nav>
+          {children}
+        </div>
       </body>
     </html>
   );
