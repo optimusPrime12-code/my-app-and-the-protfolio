@@ -7,7 +7,7 @@ import {
     HiChatBubbleBottomCenterText,
     HiEnvelope,
 } from 'react-icons/hi2';
-
+import { motion } from "framer-motion";
 import Link from 'next/link'
 import { useRouter } from 'next/navigation';
 import { usePathname } from 'next/navigation';
@@ -54,9 +54,17 @@ const Nav = () => {
              xl:text-xl xl:rounded-full'>
                 {navlinks.map((link) => {
                     return <Link key={link.id} href={link.path} className={`${link.path == pathname && 'text-red-500'} hover:text-red-500`}>
-                        <div>
+                        <motion.div
+                            whileHover={{ scale: 2.1 }}
+                            whileTap={{ scale: 0.95 }}
+                            onHoverStart={() => console.log("hover started!")}
+                            className="rounded-lg text-white hover:text-red-500"
+                        >
+
                             {link.icon}
-                        </div>
+
+                        </motion.div>
+
                     </Link>
                 })}
             </div>
